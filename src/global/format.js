@@ -933,7 +933,25 @@ var make_ssf = function make_ssf(SSF) {
     }
     SSF.is_date = fmt_is_date;
 
+    function spaceFormat(val) {
+        let result = '';
+        let dotIndex = val.indexOf('.');
+        if (dotIndex === -1) {
+            dotIndex = val.length;
+        }
+        for(let i = 0; i < val.length; ++i) {
+            if (i < dotIndex && (dotIndex - i) % 3 === 0 && i !== 0) {
+                result += ' ';
+            }
+            result += val.charAt(i);
+        }
+        return result;
+    }
+
     function eval_fmt(fmt, v, opts, flen) {
+        if (fmt == "# ##0.00") {
+            return spaceFormat(v.toString());
+        }
         var out = [],
             o = "",
             i = 0,
@@ -1353,7 +1371,6 @@ var make_ssf = function make_ssf(SSF) {
         var retval = "";
         for (i = 0; i !== out.length; ++i)
             if (out[i] != null) retval += out[i].v;
-   
         return retval;
     }
     SSF._eval = eval_fmt;
@@ -1432,7 +1449,7 @@ var make_ssf = function make_ssf(SSF) {
                 break;
         }
 
-        //new runze 增加万 亿 格式  
+        //new runze 增加万 亿 格式
         //注："w":2万2500  "w0":2万2500  "w0.0":2万2500.2  "w0.00":2万2500.23......自定义精确度
         var reg = /^(w|W)((0?)|(0\.0+))$/;
         if(!!sfmt.match(reg)){
@@ -1448,7 +1465,7 @@ var make_ssf = function make_ssf(SSF) {
                 v = Math.abs(v);
             }
             var vInt = parseInt(v);
-             
+
             var vlength = vInt.toString().length;
             if( vlength> 4){
                 if(vlength > 8){
@@ -1467,7 +1484,7 @@ var make_ssf = function make_ssf(SSF) {
                     }
                     v = w + "万" + q;
                 }
-                
+
 
                 if(v.indexOf("亿0万0") != -1){
                     v = v.replace("0万0","");
@@ -1526,7 +1543,7 @@ var make_ssf = function make_ssf(SSF) {
                             break;
                     }
                     v = v.substring(0, v.indexOf("亿") + 1) + afterYi + v.substring(v.indexOf("万"))
-                    
+
 
                     if (afterWan.substring(0, 1) !== "." && afterWan != "") {
                         switch ((parseInt(afterWan) + "").length) {
@@ -1554,7 +1571,7 @@ var make_ssf = function make_ssf(SSF) {
             }else{
                 return v;
             }
-            
+
         }
 
 
@@ -1760,7 +1777,7 @@ function fuzzydate(s) {
 export function genarate(value) {//万 单位格式增加！！！
     var ret = [];
     var m = null, ct = {}, v = value;
-    
+
     if(value == null){
         return null;
     }
@@ -1807,7 +1824,7 @@ export function genarate(value) {//万 单位格式增加！！！
                 strlen = 5;
             }
 
-            ct = { "fa": "#0."+ new Array(strlen + 1).join("0") +"E+00", "t": "n" }; 
+            ct = { "fa": "#0."+ new Array(strlen + 1).join("0") +"E+00", "t": "n" };
         }
         else{
             ct = { "fa": "#0.E+00", "t": "n" };
@@ -1965,7 +1982,7 @@ export function genarate(value) {//万 单位格式增加！！！
         else{
             ct.fa = "yyyy-MM-dd";
         }
-        
+
         ct.t = "d";
         m = SSF.format(ct.fa, v);
     }
@@ -1994,7 +2011,7 @@ export function valueShowEs(r, c, d) {
     else{
         if (!isNaN(fuzzynum(value))){
             if(typeof(value) == "string" && value.indexOf("%") > -1){
-                
+
             }
             else{
                 value = getcellvalue(r, c, d, "v");
