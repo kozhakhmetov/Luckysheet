@@ -1,6 +1,6 @@
 {
-  "name": "luckysheet",
-  "version": "2.1.13",
+  "name": "qbi-luckysheet",
+  "version": "1.0.1",
   "main": "dist/luckysheet.cjs.js",
   "module": "dist/luckysheet.esm.js",
   "browser": "dist/luckysheet.umd.js",
@@ -59,5 +59,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "repository": "https://github.com/kozhakhmetov/Luckysheet.git",
+  "author": "kozhakhmetov <adilkhan.kozhakhmetov@gmail.com>",
+  "license": "MIT"
 }

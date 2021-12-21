@@ -636,7 +636,7 @@ export function frozenFirstRow(order) {
                 top
             ];
         }
-        
+
         luckysheetFreezen.saveFreezen(freezenhorizontaldata, top, null, null);
 
         if (luckysheetFreezen.freezenverticaldata != null) {
@@ -6858,4 +6858,13 @@ export function checkTheStatusOfTheSelectedCells(type,status){
     })
 
     return flag;
+}
+
+export function hideWorkArea() {
+    let workarea = $(".luckysheet-work-area");
+    if (workarea.hasClass("hide-work-area")) {
+        workarea.removeClass("hide-work-area");
+    } else {
+        workarea.addClass("hide-work-area");
+    }
 }
