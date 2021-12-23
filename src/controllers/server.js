@@ -381,7 +381,7 @@ const server = {
 	    }
     },
     wsUpdateMsg: function(item) {
-	    let type = item.t,
+		let type = item.t,
 	        index = item.i,
 	        value = item.v;
 

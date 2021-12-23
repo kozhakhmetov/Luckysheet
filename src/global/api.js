@@ -6857,7 +6857,7 @@ export function checkTheStatusOfTheSelectedCells(type,status){
         return cell[type] == status;
     })
 
-    return flag;
+    return flag; 
 }
 
 export function hideWorkArea() {
@@ -6867,4 +6867,5 @@ export function hideWorkArea() {
     } else {
         workarea.addClass("hide-work-area");
     }
+    $(window).trigger('resize');
 }

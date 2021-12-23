@@ -219,7 +219,7 @@ async function core() {
 
     await require('esbuild').buildSync({
         format: 'iife',
-        globalName: 'luckysheet',    
+        globalName: 'luckysheet',
         entryPoints: ['src/index.js'],
         bundle: true,
         minify: production,
@@ -296,7 +296,7 @@ function copyStaticCssImages(){
 }
 
 const dev = series(clean, parallel(pluginsCss, plugins, css, pluginsJs, copyStaticHtml, copyStaticFonts, copyStaticAssets, copyStaticImages, copyStaticExpendPlugins, copyStaticDemoData, copyStaticCssImages, core), watcher, serve);
-const build = series(clean, parallel(pluginsCss, plugins, css, pluginsJs, copyStaticHtml, copyStaticFonts, copyStaticAssets, copyStaticImages, copyStaticExpendPlugins, copyStaticDemoData, copyStaticCssImages, core));
+const build = series(clean, parallel(pluginsCss, plugins, css, pluginsJs, copyStaticHtml, copyStaticFonts, copyStaticAssets, copyStaticImages, copyStaticExpendPlugins, copyStaticDemoData, copyStaticCssImages, core_rollup));
 
 exports.dev = dev;
 exports.build = build;
