@@ -2833,6 +2833,36 @@ const menuButton = {
             openProtectionModal(sheetFile);
         });
 
+        $("#luckysheet-remove-border").click(function(){
+            let color = "#ffffff";
+            let style = "1"
+
+            let cfg = $.extend(true, {}, Store.config);
+            if(cfg["borderInfo"] == null){
+                cfg["borderInfo"] = [];
+            }
+
+            let borderInfo = {
+                "rangeType": "range",
+                "borderType": "border-all",
+                "color": color,
+                "style": style,
+                "range": [{"row": [0, 100], "column": [0, 100]}]
+            };
+
+            cfg["borderInfo"].push(borderInfo);
+
+
+            server.saveParam("cg", Store.currentSheetIndex, cfg["borderInfo"], { "k": "borderInfo" });
+
+            Store.config = cfg;
+            Store.luckysheetfile[getSheetIndex(Store.currentSheetIndex)].config = Store.config;
+
+            setTimeout(function () {
+                luckysheetrefreshgrid();
+            }, 1);
+        });
+
         //print
         $("#luckysheet-icon-print").click(function(){
             let menuButtonId = $(this).attr("id") + "-menuButton";

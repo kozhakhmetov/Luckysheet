@@ -56,7 +56,8 @@ export const defaultToolbar = [
     'screenshot',
     'findAndReplace',
     'protection',
-    'print'
+    'print',
+    'removeBorder'
 ];
 
 // 工具栏按钮 id 关系
@@ -97,7 +98,8 @@ export const toolbarIdMap = {
     screenshot: '#luckysheet-chart-btn-screenshot', //'screenshot'
     findAndReplace: '#luckysheet-icon-seachmore', //'Find and Replace'
     protection: '#luckysheet-icon-protection', // 'Worksheet protection'
-    print: '#luckysheet-icon-print' // 'print'
+    print: '#luckysheet-icon-print', // 'print'
+    removeBorder: '#luckysheet-remove-border'
 };
 
 // 创建工具栏按钮的html
@@ -829,7 +831,22 @@ export function createToolbarHtml() {
                     </div>
                 </div>
             </div>
-        </div>` // 'print'
+        </div>`, // 'print'
+        removeBorder: `<div class="luckysheet-toolbar-button-split-left luckysheet-toolbar-button luckysheet-inline-block luckysheet-icon-border-all"
+        data-tips="${toolbar.border}" id="luckysheet-remove-border" role="button" style="user-select: none;">
+            <div class="luckysheet-toolbar-button-outer-box luckysheet-inline-block"
+            style="user-select: none;">
+                <div class="luckysheet-toolbar-button-inner-box luckysheet-inline-block"
+                style="user-select: none;">
+                    <div class="luckysheet-icon luckysheet-inline-block " style="user-select: none;">
+                        <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-border-all iconfont luckysheet-iconfont-quanjiabiankuang"
+                        style="user-select: none;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`,
+
     };
 
     const showtoolbar = luckysheetConfigsetting.showtoolbar;
