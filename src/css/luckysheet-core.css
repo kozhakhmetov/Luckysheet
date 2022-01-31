@@ -107,10 +107,6 @@
     position: relative;
 }
 
-.hide-work-area {
-    display: none;
-}
-
 .luckysheet_info_detail {
     position: relative;
     left: 0px;
@@ -1038,7 +1034,6 @@
     right: 0;
     bottom: 0;
     left: 0;
-    /* background-color: #f6f6f6; */
     background-color: #fafafc;
     color: #444;
     height: 31px;
@@ -7360,4 +7355,8 @@ fieldset[disabled] .btn-danger.focus {
 #luckysheet-icon-redo.disabled {
     cursor: default;
     opacity: .4;
+}
+
+.hide-work-area {
+    display: none;
 }
