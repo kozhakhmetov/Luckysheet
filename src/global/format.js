@@ -939,7 +939,7 @@ var make_ssf = function make_ssf(SSF) {
         if (dotIndex === -1) {
             dotIndex = val.length;
         }
-        for(let i = 0; i < val.length; ++i) {
+        for(let i = 0; i < dotIndex; ++i) {
             if (i < dotIndex && (dotIndex - i) % 3 === 0 && i !== 0) {
                 result += ' ';
             }
